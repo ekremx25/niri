@@ -335,3 +335,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 hotkey-overlay {
     skip-at-startup
 }
+
+cursor {
+    xcursor-theme "catppuccin-mocha-sky-cursors"
+    xcursor-size 24
+}
