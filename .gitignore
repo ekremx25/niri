@@ -1,0 +1,6 @@
+*.backup-*
+*.bak
+*.old
+*~
+__pycache__/
+*.py[cod]
