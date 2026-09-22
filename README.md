@@ -1,21 +1,21 @@
 # Niri Configuration
 
-Taşınabilir Niri yapılandırması. Arch Linux ve CachyOS üzerinde Niri, Quickshell ve Wayland uygulamalarıyla kullanılmak üzere hazırlanmıştır.
+A portable Niri configuration designed for Niri, Quickshell, and native Wayland applications on Arch Linux and CachyOS.
 
-## Özellikler
+## Features
 
-- Türkçe klavye düzeni ve Wayland uygulama ortamı
-- Klavye ve fare odaklı pencere yönetimi
-- Quickshell uygulama çekmecesi (`Super+A`)
-- DaVinci Resolve'u açan veya mevcut penceresine odaklanan kısayol (`Super+D`)
-- Pencereyi sol yarı ile genişletilmiş sütun arasında geçiren kısayol (`Super+M`)
-- PipeWire ses tuşları ve Niri ekran görüntüsü kısayolları
-- Quickshell, NetworkManager applet ve Waypaper başlangıcı
-- Makineye özel monitör ayarları için ayrı `outputs.kdl`
+- Turkish keyboard layout and a Wayland-native application environment
+- Keyboard and mouse focused window management
+- Quickshell application drawer shortcut (`Super+A`)
+- Open DaVinci Resolve or focus its existing window (`Super+D`)
+- Toggle the focused window between the left half and an expanded column (`Super+M`)
+- PipeWire volume controls and Niri screenshot shortcuts
+- Automatic startup for Quickshell, NetworkManager Applet, and Waypaper
+- Separate `outputs.kdl` for machine-specific monitor settings
 
-## Gereksinimler
+## Requirements
 
-Ana paketler:
+Install the core packages:
 
 ```bash
 sudo pacman -S niri pipewire wireplumber xdg-desktop-portal \
@@ -23,11 +23,11 @@ sudo pacman -S niri pipewire wireplumber xdg-desktop-portal \
   network-manager-applet kitty dolphin firefox
 ```
 
-Yapılandırmada ayrıca `quickshell`, `waypaper` ve `hyprlock` komutları kullanılır. Bunlardan istemediklerinizi `config.kdl` içinden kaldırabilirsiniz.
+The configuration also calls `quickshell`, `waypaper`, and `hyprlock`. Remove their entries from `config.kdl` if you do not use them.
 
-Niri ekran paylaşımı ve OBS yakalama için `xdg-desktop-portal-gnome` ile `xdg-desktop-portal-gtk` gereklidir.
+Niri screen sharing and OBS capture require `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`.
 
-## Kurulum
+## Installation
 
 ```bash
 git clone https://github.com/ekremx25/niri.git
@@ -35,45 +35,45 @@ cd niri
 ./install.sh
 ```
 
-Kurulum betiği mevcut `~/.config/niri/config.kdl` dosyasını tarih ekleyerek yedekler, dosyaları kurar ve `niri validate` ile doğrular.
+The installer creates a timestamped backup of the existing `~/.config/niri/config.kdl`, installs the configuration and helper scripts, and runs `niri validate`.
 
-## Monitör ayarı
+## Monitor Setup
 
-Bağlı çıkışları öğrenin:
+List the connected outputs:
 
 ```bash
 niri msg outputs
 ```
 
-Ardından `~/.config/niri/outputs.kdl` dosyasındaki örneği kendi çıkış adı, çözünürlük, yenileme hızı ve ölçek değerinizle düzenleyin. Monitör bilgileri makineye özel olduğu için depodaki ana ayara sabitlenmemiştir.
+Edit the example in `~/.config/niri/outputs.kdl` with your output name, resolution, refresh rate, position, and scale. Monitor values are not hard-coded in the main configuration because they are machine-specific.
 
-## Kısayollar
+## Key Bindings
 
-| Kısayol | İşlem |
+| Shortcut | Action |
 | --- | --- |
-| `Super+Return` | Kitty |
-| `Super+B` | Firefox |
-| `Super+E` | Dolphin |
-| `Super+A` | Quickshell uygulama çekmecesi |
-| `Super+D` | DaVinci Resolve'u aç / öne getir |
-| `Super+M` | Sol yarı / genişletilmiş sütun |
-| `Super+F` | Tam ekran |
-| `Super+T` | Yüzen pencereyi aç/kapat |
-| `Super+1…9` | Çalışma alanına geç |
-| `Print` | Bölge ekran görüntüsü |
+| `Super+Return` | Open Kitty |
+| `Super+B` | Open Firefox |
+| `Super+E` | Open Dolphin |
+| `Super+A` | Toggle the Quickshell application drawer |
+| `Super+D` | Open or focus DaVinci Resolve |
+| `Super+M` | Toggle left half / expanded column |
+| `Super+F` | Toggle fullscreen |
+| `Super+T` | Toggle floating mode |
+| `Super+1…9` | Switch workspace |
+| `Print` | Capture a selected region |
 
-Tüm kısayollar [`config.kdl`](config.kdl) içinde açıklamalı olarak bulunur.
+All key bindings are documented in [`config.kdl`](config.kdl).
 
-## Kişiselleştirme
+## Customization
 
-- Klavye düzeni: `input.keyboard.xkb.layout`
-- Varsayılan uygulamalar: `binds` bölümü
-- Pencere kuralları: `window-rule` blokları
-- Renk, gölge ve boşluklar: `layout` bölümü
-- Başlangıç uygulamaları: `spawn-at-startup` satırları
+- Keyboard layout: `input.keyboard.xkb.layout`
+- Default applications: the `binds` section
+- Window behavior: `window-rule` blocks
+- Colors, shadows, and gaps: the `layout` section
+- Startup applications: `spawn-at-startup` entries
 
-Kişisel parola veritabanları, anahtar dosyaları, monitör kimlikleri ve yedekler depoya dahil edilmez.
+Personal password databases, key files, monitor identities, and backup files are excluded from the repository.
 
-## Lisans
+## License
 
 [MIT](LICENSE)

@@ -1,5 +1,5 @@
-// Monitor ayarları makineye özeldir. Önce `niri msg outputs` çalıştırın,
-// ardından aşağıdaki örneği kendi çıkış adınız ve modunuzla düzenleyin.
+// Monitor settings are machine-specific. Run `niri msg outputs` first,
+// then edit the example below with your output name and preferred mode.
 //
 // output "DP-1" {
 //     mode "2560x1440@144.000"

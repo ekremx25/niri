@@ -17,7 +17,7 @@ if [[ -n "$window_id" ]]; then
 fi
 
 if pgrep -f '^/opt/resolve/bin/resolve( |$)' >/dev/null; then
-    notify-send "DaVinci Resolve" "Resolve zaten çalışıyor; açılışın tamamlanmasını bekleyin."
+    notify-send "DaVinci Resolve" "Resolve is already running; wait for it to finish starting."
     exit 0
 fi
 
@@ -26,7 +26,7 @@ if [[ -z "$resolve_bin" && -x /opt/resolve/bin/resolve ]]; then
     resolve_bin=/opt/resolve/bin/resolve
 fi
 if [[ -z "$resolve_bin" ]]; then
-    notify-send -u critical "DaVinci Resolve" "Resolve çalıştırılabilir dosyası bulunamadı."
+    notify-send -u critical "DaVinci Resolve" "The Resolve executable could not be found."
     exit 1
 fi
 
@@ -44,7 +44,7 @@ if systemctl --user cat resolve-xwayland.service >/dev/null 2>&1; then
         fi
         sleep 0.1
     done
-    notify-send -u critical "DaVinci Resolve" "Özel Xwayland başlatılamadı."
+    notify-send -u critical "DaVinci Resolve" "The private Xwayland server could not be started."
     exit 1
 fi
 
